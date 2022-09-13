@@ -11,8 +11,8 @@ module.exports = async function (context, req) {
 
   const tokenUrl = `https://${tenantName}.b2clogin.com/${tenantId}/${appName}/oauth2/v2.0/token`;
   const tokenRequest = {
-    username: req.body.loginId, // "bradley+ropc@indri.co.za",
-    password: req.body.password, //"BradleyBob42!",
+    username: req.body.loginId, // "user@example.com",
+    password: req.body.password, //"verystrongpassword11!",
     grant_type: "password",
     scope: "openid 022c5902-d8ee-43b0-ac1f-c2719b799657",
     client_id: "022c5902-d8ee-43b0-ac1f-c2719b799657",
