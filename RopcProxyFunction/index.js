@@ -7,15 +7,15 @@ module.exports = async function (context, req) {
   context.log("JavaScript HTTP trigger function processed a request.");
   const tenantName = process.env.TENANT_NAME;
   const tenantId = process.env.TENANT_ID;
-  const appName = process.env.APP_NAME;
+  const ropcFlow = process.env.ROPC_FLOW_NAME;
 
-  const tokenUrl = `https://${tenantName}.b2clogin.com/${tenantId}/${appName}/oauth2/v2.0/token`;
+  const tokenUrl = `https://${tenantName}.b2clogin.com/${tenantId}/${ropcFlow}/oauth2/v2.0/token`;
   const tokenRequest = {
     username: req.body.loginId,
     password: req.body.password,
     grant_type: "password",
-    scope: `openid ${process.env.CLIENT_ID}`,
-    client_id: process.env.CLIENT_ID,
+    scope: `openid ${process.env.ROPC_CLIENT_ID}`,
+    client_id: process.env.ROPC_CLIENT_ID,
     response_type: "token",
   };
 
@@ -40,7 +40,7 @@ module.exports = async function (context, req) {
     // Something not great with username
     context.res = {
       status: 404,
-      body: await tokenResponse.json(),
+      body: await tokenResponse.text(),
     };
   }
 
