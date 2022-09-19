@@ -4,7 +4,6 @@
     "AzureWebJobsStorage": "",
     "FUNCTIONS_WORKER_RUNTIME": "node", 
     "TENANT_NAME": "migrationguideb2c",
-    "TENANT_ID": "migrationguideb2c.onmicrosoft.com",
     "ROPC_FLOW_NAME": "b2c_1_ropc_auth",
     "ROPC_CLIENT_ID": "0b69d913-dbe4-43de-bfdf-5a80e4da5185",
     "GRAPH_CLIENT_ID": "efed9b19-f61f-41e0-97ec-a6806c81db4c",

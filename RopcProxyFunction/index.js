@@ -9,7 +9,7 @@ module.exports = async function (context, req) {
   const tenantId = process.env.TENANT_ID;
   const ropcFlow = process.env.ROPC_FLOW_NAME;
 
-  const tokenUrl = `https://${tenantName}.b2clogin.com/${tenantId}/${ropcFlow}/oauth2/v2.0/token`;
+  const tokenUrl = `https://${tenantName}.b2clogin.com/${tenantName}.onmicrosoft.com/${ropcFlow}/oauth2/v2.0/token`;
   const tokenRequest = {
     username: req.body.loginId,
     password: req.body.password,
