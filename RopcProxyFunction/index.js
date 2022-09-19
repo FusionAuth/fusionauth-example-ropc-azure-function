@@ -11,11 +11,11 @@ module.exports = async function (context, req) {
 
   const tokenUrl = `https://${tenantName}.b2clogin.com/${tenantId}/${appName}/oauth2/v2.0/token`;
   const tokenRequest = {
-    username: req.body.loginId, // "bradley+ropc@indri.co.za",
-    password: req.body.password, //"BradleyBob42!",
+    username: req.body.loginId,
+    password: req.body.password,
     grant_type: "password",
-    scope: "openid 022c5902-d8ee-43b0-ac1f-c2719b799657",
-    client_id: "022c5902-d8ee-43b0-ac1f-c2719b799657",
+    scope: `openid ${process.env.CLIENT_ID}`,
+    client_id: process.env.CLIENT_ID,
     response_type: "token",
   };
 
@@ -31,9 +31,9 @@ module.exports = async function (context, req) {
     let body = await tokenResponse.json();
     const decodedToken = jwt.decode(body.access_token);
     let user = await graph.getUser(decodedToken.oid);
-    let fusionUser = transformToFusionUserObject(user); 
+    let fusionUser = transformToFusionUserObject(user);
     context.res = {
-      status: 200, 
+      status: 200,
       body: {user: fusionUser},
     };
   } else {
@@ -49,11 +49,11 @@ module.exports = async function (context, req) {
 
 function transformToFusionUserObject(azureUser) {
   let localIdentity = azureUser.identities.find(i=>i.signInType==="emailAddress"); //{|i|i["signInType"]==="emailAddress"}
-  let epochTime = new Date(azureUser.createdDateTime); 
+  let epochTime = new Date(azureUser.createdDateTime);
   epochTime = epochTime.getTime()/1000;
   let fusionUser = {
     id: azureUser.id,
-    active: azureUser.accountEnabled, 
+    active: azureUser.accountEnabled,
     firstName: azureUser.givenName,
     fullName: azureUser.displayName,
     lastName: azureUser.surname,
@@ -67,5 +67,5 @@ function transformToFusionUserObject(azureUser) {
         }
     }
   }
-  return fusionUser; 
+  return fusionUser;
 }
