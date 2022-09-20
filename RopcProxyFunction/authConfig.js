@@ -1,7 +1,7 @@
 const msalConfig = {
     auth: {
         clientId: process.env.GRAPH_CLIENT_ID,
-        authority: `https://login.microsoftonline.com/${process.env.TENANT_ID}`,
+        authority: `https://login.microsoftonline.com/${process.env.TENANT_NAME}.onmicrosoft.com`,
         clientSecret: process.env.GRAPH_CLIENT_SECRET,
    } 
 };
