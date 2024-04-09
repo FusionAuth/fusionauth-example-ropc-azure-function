@@ -7,12 +7,12 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "@azure/msal-node": "^1.0.3",
-    "@microsoft/microsoft-graph-client": "^2.2.1",
+    "@azure/msal-node": "^2.6.6",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
     "install": "^0.13.0",
     "isomorphic-fetch": "^3.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "npm": "^8.18.0"
+    "jsonwebtoken": "^9.0.2",
+    "npm": "^10.5.1"
   },
   "devDependencies": {}
 }
