@@ -61,6 +61,11 @@ function transformToFusionUserObject(azureUser) {
     email: localIdentity.issuerAssignedId,
     verified: true,
     insertInstant: epochTime,
+    registrations: [
+      {
+        applicationId: process.env.FA_APPLICATION_ID,
+      },
+    ],
     data :{
         azure:{
             identities: azureUser.identities
