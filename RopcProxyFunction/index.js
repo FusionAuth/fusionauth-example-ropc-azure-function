@@ -50,7 +50,7 @@ module.exports = async function (context, req) {
 function transformToFusionUserObject(azureUser) {
   let localIdentity = azureUser.identities.find(i=>i.signInType==="emailAddress"); //{|i|i["signInType"]==="emailAddress"}
   let epochTime = new Date(azureUser.createdDateTime);
-  epochTime = epochTime.getTime()/1000;
+  epochTime = epochTime.getTime();
   let fusionUser = {
     id: azureUser.id,
     active: azureUser.accountEnabled,
@@ -61,6 +61,11 @@ function transformToFusionUserObject(azureUser) {
     email: localIdentity.issuerAssignedId,
     verified: true,
     insertInstant: epochTime,
+    registrations: [
+      {
+        applicationId: process.env.FA_APPLICATION_ID,
+      },
+    ],
     data :{
         azure:{
             identities: azureUser.identities

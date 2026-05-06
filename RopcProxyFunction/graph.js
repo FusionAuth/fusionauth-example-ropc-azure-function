@@ -6,7 +6,7 @@ require('isomorphic-fetch');
 
 const clientOptions = {
 	authProvider: new MyAuthenticationProvider(),
-    defaultVersion: "beta"
+    defaultVersion: "v1.0"
 };
 
 const client = MicrosoftGraph.Client.initWithMiddleware(clientOptions);
