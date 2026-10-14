@@ -105,3 +105,4 @@ dist
 
 # macos
 .DS_Store
+!.vscode/
